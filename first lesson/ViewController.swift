@@ -6,7 +6,7 @@
 //
 
 import UIKit
-import SnapKit
+
 
 final class ViewController: UIViewController {
 
@@ -19,7 +19,20 @@ final class ViewController: UIViewController {
             increaseButton.isEnabled = counter < 10
             decreaseButton.isEnabled = counter > -10
             resultLabel.text = "\(counter)"
+            
+            if counter == 10 || counter == -10 {
+                let alert = UIAlertController(title: "Внимание!", message: "Вы достигли максимального значения!", preferredStyle: .alert)
+                let OkButton = UIAlertAction(title: "Ok", style: .default, handler: nil)
+                alert.addAction(OkButton)
+                present(alert, animated: true, completion: nil)
+            }
         }
+        
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        // Do any additional setup after loading the view.
     }
     
     @IBAction private func increaseButton(_ sender: UIButton) {
@@ -34,11 +47,8 @@ final class ViewController: UIViewController {
         counter = 0
     }
     
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view.
-        
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+            return .lightContent
     }
 }
 
