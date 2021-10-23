@@ -26,6 +26,11 @@ final class ViewController: UIViewController {
                 let OkButton = UIAlertAction(title: "Ok", style: .default, handler: nil)
                 alert.addAction(OkButton)
                 present(alert, animated: true, completion: nil)
+                
+                //Haptic feedback Warning
+                let generator = UINotificationFeedbackGenerator()
+                    generator.prepare()
+                    generator.notificationOccurred(.warning)
             }
         }
         
@@ -36,17 +41,23 @@ final class ViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+    
     @IBAction private func pressedButton(_ sender: UIButton) {
-        switch sender.currentTitle {
-        case "+": //+
+        switch sender.tag {
+        case 1: //+
             counter += 1
-        case "−": //-
+        case 2: //-
             counter -= 1
-        case "C": //clear
+        case 3: //clear
             counter = 0
         default:
             break
         }
+        
+        //Haptic feedback
+        let generator = UIImpactFeedbackGenerator(style: .medium)
+                generator.prepare()
+                generator.impactOccurred()
     }
 }
 
