@@ -20,6 +20,7 @@ final class ViewController: UIViewController {
             decreaseButton.isEnabled = counter > -10
             resultLabel.text = "\(counter)"
             
+            //Limit alert
             if counter == 10 || counter == -10 {
                 let alert = UIAlertController(title: "Внимание!", message: "Вы достигли максимального значения!", preferredStyle: .alert)
                 let OkButton = UIAlertAction(title: "Ok", style: .default, handler: nil)
@@ -37,15 +38,15 @@ final class ViewController: UIViewController {
     
     @IBAction func pressedButton(_ sender: UIButton) {
         switch sender.currentTitle {
-        case "+":
+        case "+": //+
             counter += 1
-        case "−":
+        case "−": //-
             counter -= 1
-        case "C":
+        case "C": //clear
             counter = 0
         default:
             break
         }
-    }    
+    }
 }
 
