@@ -36,7 +36,7 @@ final class ViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-    @IBAction func pressedButton(_ sender: UIButton) {
+    @IBAction private func pressedButton(_ sender: UIButton) {
         switch sender.currentTitle {
         case "+": //+
             counter += 1
