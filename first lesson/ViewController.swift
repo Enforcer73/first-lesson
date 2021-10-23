@@ -28,9 +28,9 @@ final class ViewController: UIViewController {
                 present(alert, animated: true, completion: nil)
                 
                 //Haptic feedback Warning
-                let generator = UINotificationFeedbackGenerator()
-                    generator.prepare()
-                    generator.notificationOccurred(.warning)
+                let generatorWarning = UINotificationFeedbackGenerator()
+                    generatorWarning.prepare()
+                    generatorWarning.notificationOccurred(.warning)
             }
         }
         
@@ -56,8 +56,8 @@ final class ViewController: UIViewController {
         
         //Haptic feedback
         let generator = UIImpactFeedbackGenerator(style: .medium)
-                generator.prepare()
-                generator.impactOccurred()
+            generator.prepare()
+            generator.impactOccurred()
     }
 }
 
