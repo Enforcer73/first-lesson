@@ -21,15 +21,21 @@ final class ViewController: UIViewController {
             resultLabel.text = "\(counter)"
             
             //Limit alert
-            if counter == 10 || counter == -10 {
-                let alert = UIAlertController(title: "Внимание!", message: "Вы достигли максимального значения!", preferredStyle: .alert)
+            if counter == 10 {
+                let alertMax = UIAlertController(title: "Внимание!", message: "Вы достигли максимального значения!", preferredStyle: .alert)
                 let OkButton = UIAlertAction(title: "Ok", style: .default, handler: nil)
-                alert.addAction(OkButton)
-                present(alert, animated: true, completion: nil)
-                
-                //Haptic feedback Warning
+                alertMax.addAction(OkButton)
+                present(alertMax, animated: true, completion: nil)
                 let generatorWarning = UINotificationFeedbackGenerator()
-                    generatorWarning.prepare()
+                    generatorWarning.notificationOccurred(.warning)
+                }
+                        
+            if counter == -10 {
+                let alertMin = UIAlertController(title: "Внимание!", message: "Вы достигли минимального значения!", preferredStyle: .alert)
+                let OkButton = UIAlertAction(title: "Ok", style: .default, handler: nil)
+                alertMin.addAction(OkButton)
+                present(alertMin, animated: true, completion: nil)
+                let generatorWarning = UINotificationFeedbackGenerator()
                     generatorWarning.notificationOccurred(.warning)
             }
         }
