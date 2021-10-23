@@ -35,20 +35,17 @@ final class ViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-    @IBAction private func increaseButton(_ sender: UIButton) {
-        counter += 1
-    }
-    
-    @IBAction private func decreaseButton(_ sender: UIButton) {
-        counter -= 1
-    }
-    
-    @IBAction private func reset(_ sender: UIButton) {
-        counter = 0
-    }
-    
-    override var preferredStatusBarStyle: UIStatusBarStyle {
-            return .lightContent
-    }
+    @IBAction func pressedButton(_ sender: UIButton) {
+        switch sender.currentTitle {
+        case "+":
+            counter += 1
+        case "−":
+            counter -= 1
+        case "C":
+            counter = 0
+        default:
+            break
+        }
+    }    
 }
 
