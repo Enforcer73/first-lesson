@@ -59,6 +59,7 @@ final class ViewController: UIViewController {
             generator.impactOccurred()
     }
     
+    //Status bar style
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
     }
