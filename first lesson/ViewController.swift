@@ -33,7 +33,6 @@ final class ViewController: UIViewController {
                     generatorWarning.notificationOccurred(.warning)
             }
         }
-        
     }
     
     override func viewDidLoad() {
@@ -58,6 +57,10 @@ final class ViewController: UIViewController {
         let generator = UIImpactFeedbackGenerator(style: .medium)
             generator.prepare()
             generator.impactOccurred()
+    }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
     }
 }
 
