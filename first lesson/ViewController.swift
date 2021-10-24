@@ -14,31 +14,34 @@ final class ViewController: UIViewController {
     @IBOutlet private weak var decreaseButton: UIButton!
     @IBOutlet private weak var resultLabel: UILabel!
     
+    enum AlertMessage: String {
+        case max = "Вы достигли максимального значения!"
+        case min = "Вы достигли минимального значения!"
+    }
+
     private var counter: Int = 0 {
         didSet {
             increaseButton.isEnabled = counter < 10
             decreaseButton.isEnabled = counter > -10
             resultLabel.text = "\(counter)"
             
-            //Limit alert
             if counter == 10 {
-                let alertMax = UIAlertController(title: "Внимание!", message: "Вы достигли максимального значения!", preferredStyle: .alert)
-                let OkButton = UIAlertAction(title: "Ok", style: .default, handler: nil)
-                alertMax.addAction(OkButton)
-                present(alertMax, animated: true, completion: nil)
-                let generatorWarning = UINotificationFeedbackGenerator()
-                    generatorWarning.notificationOccurred(.warning)
-                }
-                        
-            if counter == -10 {
-                let alertMin = UIAlertController(title: "Внимание!", message: "Вы достигли минимального значения!", preferredStyle: .alert)
-                let OkButton = UIAlertAction(title: "Ok", style: .default, handler: nil)
-                alertMin.addAction(OkButton)
-                present(alertMin, animated: true, completion: nil)
-                let generatorWarning = UINotificationFeedbackGenerator()
-                    generatorWarning.notificationOccurred(.warning)
+                showAlert(message: .max)
+            } else if counter == -10 {
+                showAlert(message: .min)
             }
         }
+    }
+    
+    //Alert
+    private func showAlert(message: AlertMessage) {
+        let alert = UIAlertController(title: "Внимание!", message: message.rawValue, preferredStyle: .alert)
+        let OkButton = UIAlertAction(title: "Ok", style: .default, handler: nil)
+        alert.addAction(OkButton)
+        present(alert, animated: true, completion: nil)
+        let generatorWarning = UINotificationFeedbackGenerator()
+            generatorWarning.prepare()
+            generatorWarning.notificationOccurred(.warning)
     }
     
     override func viewDidLoad() {
