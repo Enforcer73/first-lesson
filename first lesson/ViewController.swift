@@ -39,9 +39,10 @@ final class ViewController: UIViewController {
         let OkButton = UIAlertAction(title: "Ok", style: .default, handler: nil)
         alert.addAction(OkButton)
         present(alert, animated: true, completion: nil)
+        
+        //Feedback Warning
         let generatorWarning = UINotificationFeedbackGenerator()
-            generatorWarning.prepare()
-            generatorWarning.notificationOccurred(.warning)
+        generatorWarning.notificationOccurred(.warning)
     }
     
     override func viewDidLoad() {
@@ -49,7 +50,7 @@ final class ViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-    
+    //Acnion
     @IBAction private func pressedButton(_ sender: UIButton) {
         switch sender.tag {
         case 1: //+
